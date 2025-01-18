@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+.nota{
+  font-size: 1em;
+  color: #F4C135;
+}
+
 .form {
   display: block;
   justify-content: space-between;

@@ -10,11 +10,14 @@ function Login() {
           <img src={appaLogo} className="logo" alt="Appa" />
         </a>
       </div>
+      <p className='nota'><strong>user:</strong> cliente , <strong>user:</strong> cuidador, <strong>user:</strong> admin <br></br>
+      <strong>#las contraseñas son el mismo user</strong>
+      </p>
       <h1>Login</h1>
       <form className='form'>
         <label>
-          Email:</label>
-        <input type="email" name="email" />
+          User:</label>
+        <input type="text" name="user" />
         <label>
           Password:</label>
         <input type="password" name="password" />
