@@ -1,13 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './paginas/App.tsx'
 import Admin from './paginas/admin.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './paginas/login.tsx';
 import ProtectedRoute from './paginas/ProtectedRoute.tsx';
 import { AuthProvider } from './auth/AuthProvider.tsx';
 import Cuidador from './paginas/cuidador.tsx'
+import Cliente from './paginas/cliente.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,20 +18,20 @@ const router = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        path: "/app",
-        element: <App />,
+        path: "/cliente",
+        element: <Cliente />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
+      },
+      {
+        path: "/cuidador",
+        element: <Cuidador />,
+      },
+              ],
   },
-  {
-    path: "/admin",
-    element: <Admin />,
-},
-{
-  path: "/cuidador",
-  element: <Cuidador />,
-},
-],},
-]
-);
+                                  ]);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -14,7 +14,7 @@ function Login() {
     e.preventDefault();
     if (user === 'cliente' && password === 'cliente') {
       auth.isAuth = true;
-      setRedirectTo('/app');
+      setRedirectTo('/cliente');
     } else if (user === 'cuidador' && password === 'cuidador') {
       auth.isAuth = true;
       setRedirectTo('/cuidador'); // Asume que existe esta ruta
