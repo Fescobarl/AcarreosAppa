@@ -1,5 +1,5 @@
 import viteLogo from '/vite.svg'
-import './App.css'
+import '../App.css'
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
       </div>
-      <h1>Login</h1>
+      <h1>CLIENTE</h1>
       
     </>
   )
