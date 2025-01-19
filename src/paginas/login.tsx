@@ -32,6 +32,7 @@ function Login() {
 
     return (
     <>
+    <div className='fondo'>
       <div>
         <a href="https://i.pinimg.com/originals/b6/2b/f4/b62bf4d6aa7019de819f80f01667e466.jpg" target="_blank">
           <img src={appaLogo} className="logo" alt="Appa" />
@@ -52,6 +53,7 @@ function Login() {
         <div className='espacio'> </div>
         <button className='button'>Entrar</button>
       </form>
+      </div>
 
     </>
   )

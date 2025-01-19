@@ -36,7 +36,7 @@ input {
 
 .logo {
   height: 6em;
-  padding: 1em;
+  padding: 2em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -68,4 +68,14 @@ input {
 
 .read-the-docs {
   color: #888;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    justify-content: center;
+  }
+  
 }

@@ -6,11 +6,19 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #4A4F4F;
+  background-image: url('/fondo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.fondo{
+  background-color: #213547a4;
 }
 
 a {
@@ -47,6 +55,7 @@ h1 {
   background-color: #591509;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin-bottom: 1em;
 }
 .button:hover {
   border-color: #f9f9f9;
