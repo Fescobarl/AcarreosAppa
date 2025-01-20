@@ -1,0 +1,101 @@
+body{
+  margin: 0;
+}
+.body-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e7ce9a;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.a {
+    font-weight: 500;
+    color: #84dbe4;
+    text-decoration:wavy;
+    text-shadow: #000 1px 1px 5px;
+  }
+  .a:hover {
+    color: #77c1c9;
+  }
+
+.fondo{
+    display: flex;
+    flex-direction: column;
+    background-color: #4a4f4f;
+    background: linear-gradient(300deg, #715447 28%, #B6D7F4 100%);
+    padding: 2em 4em;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+}
+
+.logo {
+    height: 6em;
+    padding: 1em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  .logo:hover {
+    filter: drop-shadow( 0 0 1em #591509);
+  }
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    background-color: #FEF7DB;
+    color: #000;
+  }
+.label{
+    color: #ccc;
+    text-shadow: #000 1px 1px 5px;
+}
+
+.h1 {
+    font-size: 2.5em;
+    line-height: 1.1;
+    color: #ccc;
+    text-shadow: #000 1px 1px 5px;
+}
+
+.button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #591509;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin-bottom: 1em;
+    color: #ccc;
+}
+.button:hover {
+    border-color: #f9f9f9;
+}
+.button:focus,
+.button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+  
+.nota{
+    text-align: center;
+    font-size: 1em;
+    color: white;
+    text-shadow: #000 1px 1px 5px;
+}

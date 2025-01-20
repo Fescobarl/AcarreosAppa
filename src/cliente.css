@@ -1,5 +1,60 @@
+.body-cliente{
+    display: block;
+    font-family: Arial, sans-serif;
+    background-color: #e7ce9a;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.nav-container{
+    background-color: #333;
+    display: flex;
+    flex-direction: row;
+    padding: 0 0 0 1.3em;
+    justify-content: flex-start;
+    align-items: center;
+}
 .nav{
-    display: block  ;
-    justify-items: space-around;
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    background-color: #333;
+    color: white;
+    padding: 2em;
+}
+
+.nav-item{
+    background-color: #ccc;
+    padding: 0.7em;
+    border-radius: 0.5em;
     color: black;
+}
+
+.nav-item:hover{
+    background-color: #555;
+    color: white;
+}
+
+.logo-cliente{
+    display: flex;
+    width: 3.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+
+.logo-cliente:hover{
+    filter: drop-shadow( 0 0 1em #591509);
+}
+
+h1{
+    color: #333;
+    text-align: center;
+    font-size: 3em;
+}
+p{
+    color: #333;
+    text-align: justify;
+    font-size: 1em;
+    padding: 1em;
 }
