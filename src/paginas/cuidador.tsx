@@ -11,6 +11,7 @@ function Cuidador() {
         </a>
       </div>
       <h1>CUIDADOR</h1>
+      <h2>Benito Bad Bunny</h2>
       
     </>
   )
