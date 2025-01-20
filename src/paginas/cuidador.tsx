@@ -12,6 +12,7 @@ function Cuidador() {
       </div>
       <h1>CUIDADOR</h1>
       <h2>Benito Bad Bunny</h2>
+      <h3>Hola, nuevo cambio</h3>
       
     </>
   )
