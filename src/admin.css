@@ -1,0 +1,154 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  width: 100%;
+}
+
+/* Encabezado */
+.header {
+  grid-column: span 2;
+  text-shadow: #ffffff 1px 0px 10px;
+  background: #715447;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.header h1 {
+  color: #362822;
+}
+
+.header img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Barra lateral */
+.sidebar {
+  background: #936f502e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18pt;
+  transition: background 0.3s;
+}
+
+.sidebar img {
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: #333;
+}
+
+/* Contenido principal */
+.content {
+  background: #F9EFE3;
+  padding: 20px;
+  position: relative;
+}
+
+.search-section {
+  display: flex;
+  align-items: center;
+}
+
+.search-section input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Tabla */
+.table-section {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.column {
+  background: #ddd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* Pie de página */
+.report-section {
+  grid-column: span 2;
+  background: #F9EFE3;
+  padding: 20px;
+  text-align: center;
+  gap: 10px;
+}
+
+.report-section button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 10px;
+}
+
+.report-section button:hover {
+  background: #333;
+}
+
+.report-section input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.report-section .date-section-container {
+  display: flex;
+  justify-content: center;
+}
+
+.date-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.container.sidebar-hidden {
+  grid-template-columns: 1fr;
+}
+
+.arrow-open {
+  top: 20px;
+  left: 20px;
+  width: 30px; /* Adjust the size as needed */
+  cursor: pointer;
+}
