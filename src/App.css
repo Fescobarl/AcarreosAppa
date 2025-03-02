@@ -1,8 +1,9 @@
+@import "tailwindcss";
+
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
 }
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -22,7 +23,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.fondo{
+.fondo {
   background-color: #4a4f4f;
 }
 
@@ -35,19 +36,11 @@ a:hover {
   color: #77c1c9;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
 }
-.espacio{
+.espacio {
   margin-top: 2em;
 }
 .button {
@@ -70,9 +63,9 @@ h1 {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.nota{
+.nota {
   font-size: 1em;
-  color: #F4C135;
+  color: #f4c135;
 }
 
 .form {
@@ -82,7 +75,7 @@ h1 {
   margin: 2em 2em;
 }
 
-label{
+label {
   display: block;
   justify-content: space-between;
   margin-bottom: 0.5em;
@@ -95,7 +88,7 @@ input {
   border-radius: 0.25em;
   font-size: 1em;
   margin-bottom: 0.5em;
-  background-color: #FEF7DB;
+  background-color: #fef7db;
   color: #000;
 }
 
@@ -109,7 +102,7 @@ input {
   filter: drop-shadow(0 0 2em #591509);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #936F50);
+  filter: drop-shadow(0 0 2em #936f50);
 }
 
 @keyframes logo-spin {
