@@ -82,17 +82,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    console.log("Token:", token);
     if (token) {
       const fetchUserDetails = async () => {
         try {
-          console.log("Obteniendo detalles del usuario...");
           const usuario = await authService.getProfile(token);
-          console.log("Usuario obtenido:", usuario);
           dispatch({
             type: "LOGIN_SUCCESS",
             payload: { usuario, token },
           });
+          if (usuario.rol === "cliente") {
+            navigate("/cliente");
+          } else if (usuario.rol === "cuidador") {
+            navigate("/cuidador");
+          }
         } catch (error) {
           console.error("Error al obtener los detalles del usuario:", error);
           logout();
@@ -100,7 +102,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       };
       fetchUserDetails();
     } else {
-      console.log("No hay token o rol en localStorage");
       logout();
     }
   }, []);
@@ -112,7 +113,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         correo,
         contrasena,
       });
-      console.log("Usuario loging ", usuario);
       localStorage.setItem("token", token);
       dispatch({ type: "LOGIN_SUCCESS", payload: { usuario, token } });
       // Redirigir según el rol
