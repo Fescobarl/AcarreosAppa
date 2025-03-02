@@ -2,38 +2,32 @@ import appaLogo from "/appa.png";
 import "../login.css";
 import "../index.css";
 import React, { useState } from "react";
-import { useAuth } from "../components/auth/AuthProvider";
-import { Navigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
-  const [redirectTo, setRedirectTo] = useState<string | null>(null);
-  const auth = useAuth();
+  const { login, loading, error } = useAuth();
+  const [correo, setCorreo] = useState("");
+  const [contrasena, setContrasena] = useState("");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (user === "cliente" && password === "cliente") {
-      auth.isAuth = true;
-      setRedirectTo("/cliente");
-    } else if (user === "cuidador" && password === "cuidador") {
-      auth.isAuth = true;
-      setRedirectTo("/cuidador"); // Asume que existe esta ruta
-    } else if (user === "admin" && password === "admin") {
-      auth.isAuth = true;
-      setRedirectTo("/admin");
-    } else {
-      alert("Credenciales incorrectas");
-    }
-  }
 
-  if (redirectTo) {
-    return <Navigate to={redirectTo} />;
-  }
+    try {
+      await login(correo, contrasena);
+    } catch (error: any) {
+      Swal.fire({
+        title: "Datos incorrectos",
+        timer: 3000,
+        icon: "error",
+      });
+    }
+  };
 
   return (
     <>
-      <main className="body-login mx-auto flex justify-center items-center place-content-center justify-items-center place-items-center">
+      <main className="flex w-full m-auto place-content-center  justify-items-center ">
         <div className="fondo">
           <div>
             <a
@@ -43,12 +37,7 @@ function Login() {
               <img src={appaLogo} className="logo" alt="Appa" />
             </a>
           </div>
-          <p className="nota">
-            <strong>user:</strong> cliente , <strong>user:</strong> cuidador,{" "}
-            <strong>user:</strong> admin <br></br>
-            <strong>#las contraseñas son el mismo user</strong>
-          </p>
-          <h1 className="h1">Login</h1>
+          <h1 className="h1 p-4">Login</h1>
           <form className="form" onSubmit={handleSubmit}>
             <label className="label">
               <strong>User:</strong>
@@ -57,8 +46,8 @@ function Login() {
               className="input"
               type="text"
               name="user"
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
             />
             <label className="label">
               <strong>Password:</strong>
@@ -67,8 +56,8 @@ function Login() {
               className="input"
               type="password"
               name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={contrasena}
+              onChange={(e) => setContrasena(e.target.value)}
             />
             <a
               className="a"
@@ -77,9 +66,10 @@ function Login() {
             >
               ¿No tienes cuenta? Clic Aquí
             </a>
-            <button className="button">
-              <strong>Entrar</strong>
+            <button className="button" type="submit" disabled={loading}>
+              {loading ? "Cargando..." : <strong>Entrar</strong>}
             </button>
+            {error && <p style={{ color: "red" }}>{error}</p>}
           </form>
         </div>
       </main>

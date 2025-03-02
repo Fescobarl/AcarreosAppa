@@ -1,16 +1,35 @@
+import { useState } from "react";
 import "../cliente.css";
 import appaLogo from "/appa.png";
+import { useAuth } from "../context/AuthContext";
+import { NavLink } from "react-router-dom";
 
 function Cliente() {
+  const { usuario, logout } = useAuth();
+  const [origen, setOrigen] = useState("");
+  const [destino, setDestino] = useState("");
+  const [peso, setPeso] = useState("");
+  const [fechaAcarreo, setfechaAcarreo] = useState("");
+
+  const handleSubmitCreateAcarreo = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const dataAcarreo = {
+      origen,
+      destino,
+      peso,
+      fechaAcarreo,
+      cliente: usuario?._id,
+    };
+  };
   return (
     <>
-      <head>
+      <header>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
         />
-      </head>
-      <body className="body-cliente">
+      </header>
+      <div className="body-cliente">
         <div className="nav-container">
           <a
             href="https://i.pinimg.com/originals/b6/2b/f4/b62bf4d6aa7019de819f80f01667e466.jpg"
@@ -22,9 +41,12 @@ function Cliente() {
             <a className="nav-item">Rastrear acarreo</a>
             <a className="nav-item">Realizar acarreo</a>
             <a className="nav-item">Nosotros</a>
+            <button className="nav-item" onClick={logout}>
+              Cerrar sesión
+            </button>
           </nav>
         </div>
-        <div className="main-container">
+        <div className="main-container space-y-16">
           <div className="guide-number">
             <label htmlFor="">Número de guía</label>
             <input
@@ -33,45 +55,68 @@ function Cliente() {
               placeholder="Ingrese su número de guía"
             />
           </div>
-          <div className="quotation-container row">
-            <div className="quotation-inputs col-md-6 col-12">
+          <div className="quotation-container row p-4">
+            <form
+              className="quotation-inputs col-md-6 col-12 border rounded-4xl border-amber-200"
+              onSubmit={handleSubmitCreateAcarreo}
+            >
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 flex flex-row place-content-center items-center">
+                  <label htmlFor="origin" className="px-3">
+                    Origen
+                  </label>
                   <input
                     type="text"
                     className="input-quotation"
                     id="origin"
                     placeholder="Origen del paquete"
+                    value={origen}
+                    onChange={(e) => setOrigen(e.target.value)}
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 flex flex-row place-content-center items-center">
+                  <label htmlFor="destination" className="px-3">
+                    Destino
+                  </label>
                   <input
                     type="text"
                     className="input-quotation"
                     id="destination"
                     placeholder="Destino del paquete"
+                    value={destino}
+                    onChange={(e) => setDestino(e.target.value)}
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 flex flex-row place-content-center items-center">
+                  <label htmlFor="weight" className="px-3">
+                    Peso
+                  </label>
                   <input
                     type="text"
                     className="input-quotation"
                     id="weight"
                     placeholder="Peso aproximado del paquete"
+                    value={peso}
+                    onChange={(e) => setPeso(e.target.value)}
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6  flex flex-row place-content-center items-center">
+                  <label htmlFor="weight" className="px-3">
+                    Fecha acarreo
+                  </label>
                   <input
-                    type="text"
+                    type="datetime-local"
                     className="input-quotation"
                     id="date"
                     placeholder="Fecha del acarreo"
+                    value={fechaAcarreo}
+                    onChange={(e) => setfechaAcarreo(e.target.value)}
                   />
                 </div>
               </div>
               <button>COTIZAR</button>
-              <button>CONFIRMAR ACARREO</button>
-            </div>
+              <button type="submit">CONFIRMAR ACARREO</button>
+            </form>
             <div className="quotation-information col-md-6 col-12">
               <header>Cotización:</header>
               <ul>
@@ -98,7 +143,7 @@ function Cliente() {
             </p>
           </footer>
         </div>
-      </body>
+      </div>
     </>
   );
 }

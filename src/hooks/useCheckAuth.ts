@@ -1,18 +1,6 @@
-import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { FirebaseAuth } from "../service/firebaseConfig";
-import { login, logout, selectAddress } from "../store/userAuth/userAuthSlice";
-import {
-  startLoadingCar,
-  startLoadingPosts,
-  startLoadingProducts,
-  startLoadingPromos,
-  startLoadingSales,
-  startLoadingShops,
-} from "../store/granjApp/granjAppThunks";
-import { getUserById } from "../service/providers";
 import { useState } from "react";
 
 export const useCheckAuth = () => {
