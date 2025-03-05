@@ -1,161 +1,159 @@
 .body-cliente {
-    display: block;
-    font-family: Arial, sans-serif;
-    background-color: #F9EFE3; /* Updated background color */
-    font-family: 'Roboto', sans-serif;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background-color: #f9efe3; /* Updated background color */
+  font-family: "Roboto", sans-serif;
+  height: 100lvh;
 }
 
 .nav-container {
-    background-color: #715447; /* Updated background color */
-    display: flex;
-    flex-direction: row;
-    padding: 0 0 0 1.3em;
-    justify-content: flex-start;
-    align-items: center;
+  background-color: #715447; /* Updated background color */
+  display: flex;
+  flex-direction: row;
+  padding: 0 0 0 1.3em;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .nav {
-    display: flex;
-    width: 100vw;
-    justify-content: space-around;
-    background-color: #715447; /* Updated background color */
-    color: white;
-    padding: 2em;
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+  background-color: #715447; /* Updated background color */
+  color: white;
+  padding: 2em;
 }
 
 .nav-item {
-    background-color: #444; /* Updated background color */
-    padding: 0.7em;
-    border-radius: 0.5em;
-    color: white; /* Updated text color */
+  background-color: #444; /* Updated background color */
+  padding: 0.7em;
+  border-radius: 0.5em;
+  color: white; /* Updated text color */
 }
 
 .nav-item:hover {
-    background-color: #333; /* Updated background color */
-    color: white;
-    cursor: pointer;
+  background-color: #333; /* Updated background color */
+  color: white;
+  cursor: pointer;
 }
 
 .logo-cliente {
-    display: flex;
-    width: 3.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  display: flex;
+  width: 3.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
 
 .logo-cliente:hover {
-    filter: drop-shadow(0 0 1em #591509);
+  filter: drop-shadow(0 0 1em #591509);
 }
 
 .guide-number {
-    margin-top: 5em;
-    display: flex;
-    justify-content: center;
+  margin-top: 5em;
+  display: flex;
+  justify-content: center;
 }
 
 .main-container {
-    background-color: #F9EFE3; /* Updated background color */
-    padding: 1em;
-    border-radius: 25px;
+  background-color: #f9efe3; /* Updated background color */
+  padding: 1em;
+  border-radius: 25px;
 }
 
 @media screen and (min-width: 1550px) {
-    .main-container {
-        margin: 2em 20em;
-    }
+  .main-container {
+    margin: 2em 20em;
+  }
 }
 
 .quotation {
-    margin-top: 5em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25em;
+  margin-top: 5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25em;
 }
 
 .quotation-inputs {
-    background-color: #936f502e;
-    padding: 1.25em;
-    border-radius: 1%;
+  background-color: #936f502e;
+  padding: 1.25em;
+  border-radius: 1%;
 }
 
 .guide {
-    width: 48%;
-    margin: 0em 3em 0em 3em;
-    padding: 0.625em;
-    border: 1px solid #ccc;
-    border-radius: 0.60em;
+  width: 48%;
+  margin: 0em 3em 0em 3em;
+  padding: 0.625em;
+  border: 1px solid #ccc;
+  border-radius: 0.6em;
 }
 
 .guide-number label {
-    padding: 0.625em;
-    background-color: #fef7db59;
-    border-radius: 0.60em;
+  padding: 0.625em;
+  background-color: #fef7db59;
+  border-radius: 0.6em;
 }
 
 .quotation-inputs input {
-    width: 100%;
-    margin: 0.3125em 0em;
-    padding: 0.625em;
-    border: 1px solid #ccc; /* Fixed typo */
-    border-radius: 0.60em;
+  width: 100%;
+  margin: 0.3125em 0em;
+  padding: 0.625em;
+  border: 1px solid #ccc; /* Fixed typo */
+  border-radius: 0.6em;
 }
 
 .quotation-inputs button {
-    max-width: 100%;
-    min-width: 30%;
-    padding: 0.625em;
-    margin: auto;
-    margin-top: 0.625em;
-    border-radius: 0.50em;
-    margin-bottom: 0.5em;
-    cursor: pointer;
-    display: block;
-    background: #444; /* Updated background color */
-    color: white; /* Updated text color */
-    transition: background 0.3s;
+  max-width: 100%;
+  min-width: 30%;
+  padding: 0.625em;
+  margin: auto;
+  margin-top: 0.625em;
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+  cursor: pointer;
+  display: block;
+  background: #444; /* Updated background color */
+  color: white; /* Updated text color */
+  transition: background 0.3s;
 }
 
 .quotation-inputs button:hover {
-    background-color: #333; /* Updated background color */
+  background-color: #333; /* Updated background color */
 }
 
 h1 {
-    color: #333;
-    text-align: center;
-    font-size: 3em;
+  color: #333;
+  text-align: center;
+  font-size: 3em;
 }
 
 p {
-    color: #333;
-    text-align: justify;
-    font-size: 1em;
-    padding: 1em;
+  color: #333;
+  text-align: justify;
+  font-size: 1em;
+  padding: 1em;
 }
 
 .quotation-information {
 }
 
 .quotation-information header {
-    font-size: 1.25em;
-    margin-bottom: 0.625em;
+  font-size: 1.25em;
+  margin-bottom: 0.625em;
 }
 
 .quotation-information ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .quotation-information ul li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.3125em;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3125em;
 }
 
 .total {
-    font-weight: bold;
-    margin-top: 0.625em;
+  font-weight: bold;
+  margin-top: 0.625em;
 }

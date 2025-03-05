@@ -6,56 +6,83 @@ import Cuidador from "./pages/cuidador";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./context/AuthContext";
 import Spinner from "./components/Spinner";
+import Navbar from "./components/Navbar";
+import Acarreo from "./components/Acarreo/SearchAcarreo";
+import SearchAcarreo from "./components/Acarreo/SearchAcarreo";
+import ListAcarreo from "./components/Acarreo/ListAcarreo";
 
 const Router = () => {
-  const { usuario, loading } = useAuth();
+  const { usuario, loading, logout } = useAuth();
 
   // Mostrar un spinner mientras se verifica la autenticación
   if (loading) {
     return <Spinner />;
+  } else {
+    return (
+      <>
+        <Routes>
+          {/* Ruta de login */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Rutas para cliente */}
+          <Route
+            path="/cliente"
+            element={
+              <ProtectedRoute rol="cliente">
+                <Navbar />
+                <Cliente />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/guia"
+            element={
+              <ProtectedRoute rol="cliente">
+                <Navbar />
+                <SearchAcarreo />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/cuidador"
+            element={
+              <ProtectedRoute rol="cuidador">
+                <Navbar />
+                <Cuidador />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/acarreos"
+            element={
+              <ProtectedRoute rol="cuidador">
+                <Navbar />
+                <ListAcarreo />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Ruta principal (redirigir según el rol) */}
+          <Route
+            path="/"
+            element={
+              usuario ? (
+                usuario.rol === "cliente" ? (
+                  <Navigate to="/cliente" />
+                ) : (
+                  <Navigate to="/cuidador" />
+                )
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+        </Routes>
+      </>
+    );
   }
-
-  return (
-    <Routes>
-      {/* Ruta de login */}
-      <Route path="/login" element={<Login />} />
-
-      {/* Rutas para cliente */}
-      <Route
-        path="/cliente"
-        element={
-          <ProtectedRoute rol="cliente">
-            <Cliente />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/cuidador"
-        element={
-          <ProtectedRoute rol="cuidador">
-            <Cuidador />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Ruta principal (redirigir según el rol) */}
-      <Route
-        path="/"
-        element={
-          usuario ? (
-            usuario.rol === "cliente" ? (
-              <Navigate to="/cliente" />
-            ) : (
-              <Navigate to="/cuidador" />
-            )
-          ) : (
-            <Navigate to="/login" />
-          )
-        }
-      />
-    </Routes>
-  );
 };
 
 export default Router;

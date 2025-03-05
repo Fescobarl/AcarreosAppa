@@ -11,6 +11,9 @@ function Cuidador() {
               <strong>Mis acarreos</strong>
             </button>
           </div>
+          <button className="absolute w-20">
+            <img src="mapa" width={20} height={20} />
+          </button>
           <img className="mapa w-full h-full" src={mapa} alt="map" />
           <div className="boton-container">
             <button className="boton-generico">

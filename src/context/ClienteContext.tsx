@@ -56,7 +56,7 @@ export const ClienteProvider = ({ children }: { children: ReactNode }) => {
     try {
       const data = await clienteService.getAllClientes();
       dispatch({ type: "FETCH_CLIENTES_SUCCESS", payload: data });
-    } catch (error) {
+    } catch (error: any) {
       dispatch({ type: "FETCH_CLIENTES_FAILURE", payload: error.message });
     }
   };

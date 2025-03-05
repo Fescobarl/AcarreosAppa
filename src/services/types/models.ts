@@ -1,3 +1,5 @@
+import NewAcarreo from "../../components/Acarreo/NewAcarreo";
+
 // src/services/types/models.ts
 export interface User {
   _id: string;
@@ -40,11 +42,10 @@ export interface RegisterData extends LoginData {
   direccion?: string;
 }
 
-export interface Acarreo {
-  _id: string;
-  numAcarreo: number;
+export interface NewAcarreo {
+  numAcarreo?: number;
   clienteld: string;
-  cuidadorld: string;
+  cuidadorld?: string;
   fechaInicio: Date;
   fechaEntrega: Date;
   direccionOrigen: string;
@@ -52,4 +53,7 @@ export interface Acarreo {
   peso: number;
   costoTotal: number;
   estado: string;
+}
+export interface Acarreo extends NewAcarreo {
+  _id: string;
 }
