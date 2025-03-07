@@ -1,4 +1,4 @@
-import "../cliente.css";
+import "../styles/cliente.css";
 
 import { useAuth } from "../context/AuthContext";
 

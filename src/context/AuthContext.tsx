@@ -11,21 +11,30 @@ import { Cliente, Cuidador } from "../services/types/models";
 import { useNavigate } from "react-router-dom";
 
 interface AuthState {
-  usuario: Cliente | Cuidador | null;
+  usuario: Cliente | Cuidador;
   token: string | null;
   loading: boolean;
   error: string | null;
 }
 
+const initialUsuario: Cliente | Cuidador = {
+  nombre: "",
+  _id: "",
+  correo: "",
+  rol: "cliente",
+  telefono: "",
+};
+
 interface AuthContextType extends AuthState {
   login: (correo: string, contrasena: string) => Promise<void>;
   logout: () => void;
+  setUsuario: (usuario: Cliente | Cuidador, token: string) => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 const initialState: AuthState = {
-  usuario: null,
+  usuario: initialUsuario,
   token: null,
   loading: false,
   error: null,
@@ -44,7 +53,12 @@ type AuthAction =
 const authReducer = (state: AuthState, action: AuthAction): AuthState => {
   switch (action.type) {
     case "LOGIN_START":
-      return { loading: true, error: null, usuario: null, token: null };
+      return {
+        loading: true,
+        error: null,
+        usuario: initialUsuario,
+        token: null,
+      };
     case "LOGIN_SUCCESS":
       return {
         error: null,
@@ -54,7 +68,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
       };
     case "LOGIN_FAILURE":
       return {
-        usuario: null,
+        usuario: initialUsuario,
         token: null,
         error: action.payload,
         loading: false,
@@ -126,8 +140,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const setUsuario = (usuario: Cliente | Cuidador, token: string) => {
+    dispatch({ type: "LOGIN_START" });
+    dispatch({ type: "LOGIN_SUCCESS", payload: { usuario, token } });
+  };
+
   return (
-    <AuthContext.Provider value={{ ...state, login, logout }}>
+    <AuthContext.Provider value={{ ...state, login, logout, setUsuario }}>
       {children}
     </AuthContext.Provider>
   );

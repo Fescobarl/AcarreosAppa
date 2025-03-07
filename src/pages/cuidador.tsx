@@ -1,4 +1,4 @@
-import "../cuidador.css";
+import "../styles/cuidador.css";
 import mapa from "/mapa.jpg";
 
 function Cuidador() {
@@ -11,7 +11,7 @@ function Cuidador() {
               <strong>Mis acarreos</strong>
             </button>
           </div>
-          <button className="absolute w-20">
+          <button className="absolute w-20 grid ">
             <img src="mapa" width={20} height={20} />
           </button>
           <img className="mapa w-full h-full" src={mapa} alt="map" />

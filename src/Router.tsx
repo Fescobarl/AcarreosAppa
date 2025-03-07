@@ -7,12 +7,12 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./context/AuthContext";
 import Spinner from "./components/Spinner";
 import Navbar from "./components/Navbar";
-import Acarreo from "./components/Acarreo/SearchAcarreo";
 import SearchAcarreo from "./components/Acarreo/SearchAcarreo";
 import ListAcarreo from "./components/Acarreo/ListAcarreo";
+import Register from "./pages/Register";
 
 const Router = () => {
-  const { usuario, loading, logout } = useAuth();
+  const { usuario, loading } = useAuth();
 
   // Mostrar un spinner mientras se verifica la autenticación
   if (loading) {
@@ -23,6 +23,7 @@ const Router = () => {
         <Routes>
           {/* Ruta de login */}
           <Route path="/login" element={<Login />} />
+          <Route path="/registrar" element={<Register />} />
 
           {/* Rutas para cliente */}
           <Route

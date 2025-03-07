@@ -1,10 +1,11 @@
 import appaLogo from "/appa.png";
-import "../login.css";
-import "../index.css";
+import "../styles/login.css";
+import "../styles/index.css";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function Login() {
   const { login, loading, error } = useAuth();
@@ -59,13 +60,9 @@ function Login() {
               value={contrasena}
               onChange={(e) => setContrasena(e.target.value)}
             />
-            <a
-              className="a"
-              href="https://media.tenor.com/aSkdq3IU0g0AAAAM/laughing-cat.gif"
-              target="_blank"
-            >
+            <Link className="a" to="/registrar">
               ¿No tienes cuenta? Clic Aquí
-            </a>
+            </Link>
             <button className="button" type="submit" disabled={loading}>
               {loading ? "Cargando..." : <strong>Entrar</strong>}
             </button>

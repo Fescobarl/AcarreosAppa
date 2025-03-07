@@ -1,13 +1,13 @@
 // src/services/api/cliente.ts
 import apiClient from ".";
-import { Cliente } from "../types/models";
+import { Cliente, RegisterData } from "../types/models";
 
 export const clienteService = {
   async getAllClientes() {
     const response = await apiClient.get("/cliente");
     return response.data;
   },
-  async createCliente(clienteData: Omit<Cliente, "_id">) {
+  async createCliente(clienteData: any) {
     const response = await apiClient.post("/cliente", clienteData);
     return response.data;
   },
