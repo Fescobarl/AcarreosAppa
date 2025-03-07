@@ -2,8 +2,8 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000/api/v1", // URL de tu API Express
-  timeout: 10000,
+  baseURL: "https://acarreosappaapi.onrender.com/api/v1/", // URL de tu API Express
+  timeout: 30000, // Aumenta el tiempo de espera a 30 segundos
   headers: {
     "Content-Type": "application/json",
   },
@@ -24,7 +24,7 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       // Redirigir a login si no está autenticado
-      window.location.href = "/login";
+      window.location.href = "https://acarreosappaapi.onrender.com/api/v1/auth/login";
     }
     return Promise.reject(error);
   }
