@@ -13,17 +13,14 @@ const ProtectedRoute = ({
   children,
 }: ProtectedRouteProps & React.PropsWithChildren) => {
   const { usuario } = useAuth();
-  console.log("antes de if usuario ", usuario);
+
   if (!usuario) {
     return <Navigate to="/login" />;
   }
 
   if (usuario.rol !== rol) {
-    console.log("Llega aquí ", usuario.rol);
     return <Navigate to="/" />;
   }
-
-  console.log("Llega aquí children");
 
   return children;
 };

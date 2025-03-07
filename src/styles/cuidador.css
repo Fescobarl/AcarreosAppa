@@ -12,6 +12,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative; /* Ensure the container is relative */
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .boton-generico {
@@ -36,13 +39,24 @@
   justify-content: flex-start;
   align-items: center;
   gap: 1em;
+  width: 100%;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
 }
 
 .mapa {
-  max-height: 400px;
-  height: 60vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border: #555 0.2rem solid;
   border-radius: 1rem;
+  z-index: 1; /* Ensure the map is below the points */
 }
 
 .boton-terminar {
@@ -66,4 +80,77 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.custom-position-A,
+.custom-position-B,
+.custom-position-C,
+.custom-position-D,
+.custom-position-E,
+.custom-position-F {
+  position: absolute;
+  cursor: pointer;
+  z-index: 2; /* Ensure the points are above the map */
+}
+
+.custom-position-A {
+  top: 50.8%;
+  left: 9.8%;
+}
+
+.custom-position-B {
+  top: 25.4%;
+  left: 42.5%;
+}
+
+.custom-position-C {
+  top: 24.7%;
+  left: 77.1%;
+}
+
+.custom-position-D {
+  top: 61.2%;
+  left: 91.5%;
+}
+
+.custom-position-E {
+  top: 82.3%;
+  left: 38.8%;
+}
+
+.custom-position-F {
+  top: 49.2%;
+  left: 69.4%;
+}
+
+.status-container {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.disponible {
+  background-color: green;
+  color: white;
+}
+
+.no-disponible {
+  background-color: red;
+  color: white;
+}
+
+#final-travel {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#final-travel-p {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#status {
+  text-align: center;
+  margin-top: 3rem;
 }

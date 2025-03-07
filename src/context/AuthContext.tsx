@@ -21,8 +21,10 @@ const initialUsuario: Cliente | Cuidador = {
   nombre: "",
   _id: "",
   correo: "",
-  rol: "cliente",
+  rol: "",
   telefono: "",
+  bisonte: "",
+  direccion: "",
 };
 
 interface AuthContextType extends AuthState {
@@ -88,7 +90,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("rol");
     dispatch({ type: "LOGOUT" });
     navigate("/login");
   };
@@ -143,6 +144,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const setUsuario = (usuario: Cliente | Cuidador, token: string) => {
     dispatch({ type: "LOGIN_START" });
     dispatch({ type: "LOGIN_SUCCESS", payload: { usuario, token } });
+    localStorage.setItem("token", token);
   };
 
   return (
