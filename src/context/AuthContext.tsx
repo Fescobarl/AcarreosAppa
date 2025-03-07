@@ -7,11 +7,11 @@ import {
   useEffect,
 } from "react";
 import { authService } from "../services/api/auth";
-import { Cliente, Cuidador } from "../services/types/models";
+import { Cliente, Cuidador, Admin } from "../services/types/models";
 import { useNavigate } from "react-router-dom";
 
 interface AuthState {
-  usuario: Cliente | Cuidador;
+  usuario: Cliente | Cuidador | Admin;
   token: string | null;
   loading: boolean;
   error: string | null;
@@ -46,7 +46,7 @@ type AuthAction =
   | { type: "LOGIN_START" }
   | {
       type: "LOGIN_SUCCESS";
-      payload: { usuario: Cliente | Cuidador; token: string };
+      payload: { usuario: Cliente | Cuidador | Admin; token: string };
     }
   | { type: "LOGIN_FAILURE"; payload: string }
   | { type: "LOGOUT" }
@@ -109,6 +109,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             navigate("/cliente");
           } else if (usuario.rol === "cuidador") {
             navigate("/cuidador");
+          } else if (usuario.rol === "admin") {
+            navigate("/admin");
           }
         } catch (error) {
           console.error("Error al obtener los detalles del usuario:", error);
@@ -135,6 +137,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         navigate("/cliente");
       } else if (usuario.rol === "cuidador") {
         navigate("/cuidador");
+      } else if (usuario.rol === "admin") {
+        navigate("/admin");
       }
     } catch (error: any) {
       dispatch({ type: "LOGIN_FAILURE", payload: error.message });

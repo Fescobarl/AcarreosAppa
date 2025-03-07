@@ -3,13 +3,14 @@ import apiClient from ".";
 import {
   Cliente,
   Cuidador,
+  Admin,
   LoginData,
   RegisterData,
   ErrorLogin,
 } from "../types/models";
 
 interface LoginResponse {
-  usuario: Cliente | Cuidador;
+  usuario: Cliente | Cuidador | Admin;
   token: string;
   error?: string;
   message?: string;
@@ -33,8 +34,8 @@ export const authService = {
     const response = await apiClient.post("/auth/register", userData);
     return response.data;
   },
-
-  async getProfile(token: string | null = null): Promise<Cliente | Cuidador> {
+ 
+  async getProfile(token: string | null = null): Promise<Cliente | Cuidador | Admin> {
     if (token) {
       const response = await apiClient.get("/auth/getUser/" + token);
       return response.data;

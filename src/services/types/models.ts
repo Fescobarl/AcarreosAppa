@@ -6,7 +6,7 @@ export interface User {
   nombre: string;
   telefono: string;
   correo: string;
-  rol: "cliente" | "cuidador" | string;
+  rol: "cliente" | "cuidador" | "admin" | string;
 }
 
 export interface Cliente extends User {
@@ -15,6 +15,9 @@ export interface Cliente extends User {
 
 export interface Cuidador extends User {
   bisonte?: string;
+}
+
+export interface Admin extends User {
 }
 
 export interface Bisonte {
@@ -37,7 +40,7 @@ export interface ErrorLogin {
 export interface RegisterData extends LoginData {
   nombre: string;
   telefono: string;
-  rol: "cliente" | "cuidador";
+  rol: "cliente" | "cuidador" | "admin";
   bisonte?: string;
   direccion?: string;
 }

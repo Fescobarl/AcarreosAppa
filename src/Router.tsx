@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/login";
 import Cliente from "./pages/cliente";
 import Cuidador from "./pages/cuidador";
+import Admin from "./pages/admin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./context/AuthContext";
 import Spinner from "./components/Spinner";
@@ -65,6 +66,17 @@ const Router = () => {
             }
           />
 
+          {/* Rutas para admin */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute rol="admin">
+                <Navbar />
+                <Admin />
+              </ProtectedRoute>
+            }
+          />
+
           {/* Ruta principal (redirigir según el rol) */}
           <Route
             path="/"
@@ -72,8 +84,12 @@ const Router = () => {
               usuario ? (
                 usuario.rol === "cliente" ? (
                   <Navigate to="/cliente" />
-                ) : (
+                ) : usuario.rol === "cuidador" ? (
                   <Navigate to="/cuidador" />
+                ) : usuario.rol === "admin" ? (
+                  <Navigate to="/admin" />
+                ) : (
+                  <Navigate to="/login" />
                 )
               ) : (
                 <Navigate to="/login" />
