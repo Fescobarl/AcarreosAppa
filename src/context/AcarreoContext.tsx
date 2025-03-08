@@ -3,9 +3,22 @@ import { createContext, useReducer, useContext, ReactNode } from "react";
 import { acarreoService } from "../services/api/acarreo";
 import { Acarreo, NewAcarreo } from "../services/types/models";
 
+const initialClient: Acarreo = {
+  _id: "",
+  clienteld: "",
+  fechaInicio: new Date(),
+  fechaEntrega: new Date(),
+  direccionOrigen: "",
+  direccionFinal: "",
+  peso: 0,
+  costoTotal: 0,
+  estado: "",
+  direccionActual: "",
+};
+
 interface AcarreoState {
   acarreos: Acarreo[];
-  acarreo: Acarreo | null;
+  acarreo: Acarreo;
   loading: boolean;
   error: string | null;
 }
@@ -13,7 +26,9 @@ interface AcarreoState {
 interface AcarreoContextType extends AcarreoState {
   fetchAcarreos: () => Promise<void>;
   fetchAcarreo: (id: string) => Promise<Acarreo | null>;
+  fetchAcarreosByCuidador: (cuidadorId: string) => Promise<void>;
   addAcarreo: (newAcarreo: NewAcarreo) => Promise<Acarreo | null>;
+  updateAcarreo: (id: string, newAcarreo: NewAcarreo) => Promise<void>;
 }
 
 const AcarreoContext = createContext<AcarreoContextType | null>(null);
@@ -50,7 +65,7 @@ const acarreoReducer = (
 
 const initialState: AcarreoState = {
   acarreos: [],
-  acarreo: null,
+  acarreo: initialClient,
   loading: false,
   error: null,
 };
@@ -62,6 +77,16 @@ export const AcarreoProvider = ({ children }: { children: ReactNode }) => {
     dispatch({ type: "FETCH_ACARREOS_START" });
     try {
       const data = await acarreoService.getAllAcarreos();
+      dispatch({ type: "FETCH_ACARREOS_SUCCESS", payload: data });
+    } catch (error: any) {
+      dispatch({ type: "FETCH_ACARREOS_FAILURE", payload: error.message });
+    }
+  };
+
+  const fetchAcarreosByCuidador = async (cuidadorId: string) => {
+    dispatch({ type: "FETCH_ACARREOS_START" });
+    try {
+      const data = await acarreoService.getAcarreosByCuidador(cuidadorId);
       dispatch({ type: "FETCH_ACARREOS_SUCCESS", payload: data });
     } catch (error: any) {
       dispatch({ type: "FETCH_ACARREOS_FAILURE", payload: error.message });
@@ -92,9 +117,31 @@ export const AcarreoProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const updateAcarreo = async (
+    idAcarreo: string,
+    newAcarreo: Partial<NewAcarreo>
+  ) => {
+    dispatch({ type: "FETCH_ACARREO_START" });
+    try {
+      const data = await acarreoService.updateAcarreo(idAcarreo, newAcarreo);
+      dispatch({ type: "FETCH_ACARREO_SUCCESS", payload: data });
+      return data;
+    } catch (error: any) {
+      dispatch({ type: "FETCH_ACARREO_FAILURE", payload: error.message });
+      return null;
+    }
+  };
+
   return (
     <AcarreoContext.Provider
-      value={{ ...state, fetchAcarreos, fetchAcarreo, addAcarreo }}
+      value={{
+        ...state,
+        fetchAcarreos,
+        fetchAcarreo,
+        addAcarreo,
+        fetchAcarreosByCuidador,
+        updateAcarreo,
+      }}
     >
       {children}
     </AcarreoContext.Provider>

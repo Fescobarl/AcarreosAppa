@@ -32,10 +32,12 @@ const Navbar = () => {
           <NavLink className="nav-item" to={"/guia"}>
             Rastrear acarreo
           </NavLink>
-        ) : (
+        ) : usuario.rol == "cuidador" ? (
           <NavLink className="nav-item" to={"/acarreos"}>
             Ver acarreos
           </NavLink>
+        ) : (
+          <></>
         )}
         <button className="nav-item" onClick={openModal}>
           Nosotros

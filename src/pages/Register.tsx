@@ -43,8 +43,8 @@ function Register() {
   };
 
   return (
-    <div className="container">
-      <form className="formulario" onSubmit={handleSubmit}>
+    <div className="container-register">
+      <form className="formulario-register" onSubmit={handleSubmit}>
         <div>
           <a
             href="https://i.pinimg.com/originals/b6/2b/f4/b62bf4d6aa7019de819f80f01667e466.jpg"

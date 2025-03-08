@@ -17,8 +17,14 @@ export const acarreoService = {
     );
     return response.data;
   },
-  async getAcarreoByCuidador(id: string) {
-    const response = await apiClient.get<Acarreo>("/acarreo/cuidador/" + id);
+  async getAcarreoPendienteByCuidador(id: string) {
+    const response = await apiClient.get<Acarreo>(
+      "/acarreo/cuidador/" + id + "/pendiente"
+    );
+    return response.data;
+  },
+  async getAcarreosByCuidador(id: string) {
+    const response = await apiClient.get<Acarreo[]>("/acarreo/cuidador/" + id);
     return response.data;
   },
   async createAcarreo(acarreoData: NewAcarreo) {

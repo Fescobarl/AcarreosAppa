@@ -1,11 +1,6 @@
 /* Estilos generales */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
-.container {
+.container-admin {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
@@ -14,9 +9,9 @@ body {
 }
 
 /* Encabezado */
-.header {
+.header-admin {
   grid-column: span 2;
-  text-shadow: #ffffff 1px 0px 10px;
+  text-shadow: #938f8f 1px 0px 10px;
   background: #715447;
   text-align: center;
   display: flex;
@@ -25,17 +20,17 @@ body {
   gap: 5px;
 }
 
-.header h1 {
+.header-admin h1 {
   color: #362822;
 }
 
-.header img {
+.header-admin img {
   width: 50px;
   height: 50px;
 }
 
 /* Barra lateral */
-.sidebar {
+.sidebar-admin {
   background: #936f502e;
   padding: 20px;
   display: flex;
@@ -43,7 +38,7 @@ body {
   gap: 15px;
 }
 
-.sidebar button {
+.sidebar-admin button {
   background: #444;
   color: white;
   border: none;
@@ -53,30 +48,30 @@ body {
   transition: background 0.3s;
 }
 
-.sidebar img {
+.sidebar-admin img {
   width: 50px;
   display: block;
   margin: 0 auto;
   cursor: pointer;
 }
 
-.sidebar button:hover {
+.sidebar-admin button:hover {
   background: #333;
 }
 
 /* Contenido principal */
-.content {
-  background: #F9EFE3;
+.content-admin {
+  background: #f9efe3;
   padding: 20px;
   position: relative;
 }
 
-.search-section {
+.search-section-admin {
   display: flex;
   align-items: center;
 }
 
-.search-section input {
+.search-section-admin input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -84,30 +79,38 @@ body {
 }
 
 /* Tabla */
-.table-section {
+.table-section-admin {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
 
-.column {
-  background: #ddd;
+.column-admin-carer {
+  background: #936f50;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.column-admin-bison {
+  background: #f2d5bc;
+  color: #333;
   padding: 10px;
   text-align: center;
   border-radius: 5px;
 }
 
 /* Pie de página */
-.report-section {
+.report-section-admin {
   grid-column: span 2;
-  background: #F9EFE3;
+  background: #f9efe3;
   padding: 20px;
   text-align: center;
   gap: 10px;
 }
 
-.report-section button {
+.report-section-admin button {
   background: #444;
   color: white;
   border: none;
@@ -117,36 +120,37 @@ body {
   margin: 10px;
 }
 
-.report-section button:hover {
+.report-section-admin button:hover {
   background: #333;
 }
 
-.report-section input {
+.report-section-admin input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 10px;
 }
 
-.report-section .date-section-container {
+.report-section-admin .date-section-container {
   display: flex;
   justify-content: center;
 }
 
-.date-section {
+.date-section-admin {
   display: flex;
   flex-direction: column;
+  color: #333;
 }
 
-.hidden {
+.hidden-admin {
   display: none;
 }
 
-.container.sidebar-hidden {
+.container-admin.sidebar-admin-hidden {
   grid-template-columns: 1fr;
 }
 
-.arrow-open {
+.arrow-open-admin {
   top: 20px;
   left: 20px;
   width: 30px; /* Adjust the size as needed */

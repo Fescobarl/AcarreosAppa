@@ -1,16 +1,18 @@
+import { useAuth } from "../context/AuthContext";
 import "../styles/cuidador.css";
 import mapa from "/mapa.png";
 import dot from "/reddot.png";
 import { useState } from "react";
 
 function Cuidador() {
+  const { usuario } = useAuth();
   const [finalTravel, setFinalTravel] = useState<string[]>([]);
   const [selectedPoint, setSelectedPoint] = useState<string>("");
   const [currentPoint, setCurrentPoint] = useState<string>("");
   const [traveledPoints, setTraveledPoints] = useState<string[]>([]);
   const [travelablePoints, setTravelablePoints] = useState<string[]>([]);
   const [disabled, setDisabled] = useState<string[]>([]);
-  const [status, setStatus] = useState<string>("Disponible");
+  const [status, setStatus] = useState<string>(usuario.estado);
 
   let travelPoints: { [key: string]: string[] } = {
     A: ["B", "E"],
@@ -134,11 +136,11 @@ function Cuidador() {
   };
 
   return (
-    <div className="flex mx-auto place-content-center h-[100vh] w-full lg:w-[70%]">
+    <div className="flex mx-auto place-content-center w-full lg:w-[70%]">
       <div className="fondo-cuidador bg-[#e7ce9a] h-[100vh] p-5 w-full relative">
         <div className="boton-container"></div>
         <h1 className="status" id="status">
-          {status}
+          {status.toLocaleUpperCase()}
         </h1>
         <button
           className="boton-generico"

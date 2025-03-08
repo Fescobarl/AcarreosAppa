@@ -15,10 +15,10 @@ export interface Cliente extends User {
 
 export interface Cuidador extends User {
   bisonte?: string;
+  estado: string;
 }
 
-export interface Admin extends User {
-}
+export interface Admin extends User {}
 
 export interface Bisonte {
   _id: string;
@@ -53,6 +53,7 @@ export interface NewAcarreo {
   fechaEntrega: Date;
   direccionOrigen: string;
   direccionFinal: string;
+  direccionActual: string;
   peso: number;
   costoTotal: number;
   estado: string;

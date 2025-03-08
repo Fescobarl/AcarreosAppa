@@ -25,6 +25,7 @@ const initialUsuario: Cliente | Cuidador = {
   telefono: "",
   bisonte: "",
   direccion: "",
+  estado: "",
 };
 
 interface AuthContextType extends AuthState {

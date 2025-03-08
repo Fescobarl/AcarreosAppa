@@ -2,93 +2,120 @@ import "../styles/admin.css";
 import appa from "/appa.png";
 import arrow from "/arrow.png";
 import arrow2 from "/arrow (1).png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useBisonte } from "../context/BisonteContext";
+import { useCuidador } from "../context/CuidadorContext";
+import { Bisonte, Cuidador } from "../services/types/models";
+
+interface CuidadorBisonteI {
+  bisonName: string;
+  bisonId: string;
+  cuidadorName: string;
+  cuidadorId: string;
+}
 
 function Admin() {
+  const { bisontes, fetchBisontes } = useBisonte();
+  const { cuidadores, fetchCuidadores } = useCuidador();
+  const [cuidadorBisonte, setCuidadorBisonte] = useState<CuidadorBisonteI[]>(
+    []
+  );
   const [isOpen, setIsOpen] = useState(true);
 
   const openCloseSidebar = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const getData = async () => {
+      await fetchBisontes();
+      await fetchCuidadores();
+      const data: CuidadorBisonteI[] = bisontes.flatMap((bison) =>
+        cuidadores
+          .filter((cuidador) => bison.cuidador === cuidador._id)
+          .map((cuidador) => ({
+            bisonName: bison.nombre,
+            bisonId: bison._id,
+            cuidadorName: cuidador.nombre,
+            cuidadorId: cuidador._id,
+          }))
+      );
+      setCuidadorBisonte(data);
+    };
+    getData();
+  }, []);
+
   return (
     <>
       <body className="body-cliente">
-        <div className={`container ${isOpen ? "" : "sidebar-hidden"}`}>
-          <header className="header">
-            <img src={appa} className="logo" alt="appa logo" />
-            <h1>Acarreos App</h1>
-          </header>
-
-          <aside className={`sidebar ${isOpen ? "" : "hidden"}`} id="sidebar">
+        <div
+          className={`container-admin ${isOpen ? "" : "sidebar-admin-hidden"}`}
+        >
+          <aside
+            className={`sidebar-admin ${isOpen ? "" : "hidden"}`}
+            id="sidebar"
+          >
             <img
               src={arrow}
               alt="arrow left"
               onClick={openCloseSidebar}
-              className={`arrow ${isOpen ? "" : "hidden"}`}
+              className={`arrow ${isOpen ? "" : "hidden-admin"}`}
             />
             <button>Acarreos</button>
             <button>Inventario</button>
             <button>Reporte</button>
           </aside>
 
-          <main className="content">
-            <section className="search-section">
+          <main className="content-admin">
+            <section className="search-section-admin">
               {!isOpen && (
                 <img
                   src={arrow2}
                   alt="arrow right"
                   onClick={openCloseSidebar}
-                  className="arrow-open"
+                  className="arrow-open-admin"
                 />
               )}
               <input type="text" placeholder="Buscador" />
             </section>
-
-            <section className="table-section">
-              <div className="column">Appa</div>
-              <div className="column">Disponible</div>
-              <div className="column">Cuidador 1</div>
-              <div className="column">Cuidador 2</div>
-              <div className="column">Cuidador 3</div>
-              <div className="column">Cuidador 4</div>
-              <div className="column">Cuidador 5</div>
-              <div className="column">Cuidador 6</div>
-              <div className="column">Cuidador 7</div>
-              <div className="column">Cuidador 8</div>
-              <div className="column">Cuidador 9</div>
-              <div className="column">Cuidador 10</div>
-              <div className="column">Cuidador 11</div>
-              <div className="column">Cuidador 12</div>
-              <div className="column">Cuidador 13</div>
-              <div className="column">Cuidador 14</div>
-              <div className="column">Cuidador 15</div>
-              <div className="column">Cuidador 16</div>
-              <div className="column">Cuidador 17</div>
-              <div className="column">Cuidador 18</div>
-              <div className="column">Cuidador 19</div>
-              <div className="column">Cuidador 20</div>
-              <div className="column">Cuidador 21</div>
-              <div className="column">Cuidador 22</div>
-              <div className="column">Cuidador 23</div>
-              <div className="column">Cuidador 24</div>
-              <div className="column">Cuidador 25</div>
-              <div className="column">Cuidador 26</div>
-              <div className="column">Cuidador 27</div>
-              <div className="column">Cuidador 28</div>
+            <table className="text-black grid grid-cols-2 gap-2 place-content-center place-items-center text-2xl mx-auto mt-4 border-2 p-2">
+              <th className="">
+                <td>Cuidador</td>
+              </th>
+              <th>
+                <td>Bisonte</td>
+              </th>
+            </table>
+            <section className="table-section-admin text-2xl p-4 ">
+              {cuidadorBisonte.map((value) => (
+                <>
+                  <div
+                    key={value.cuidadorId}
+                    className="column-admin-carer hover:cursor-pointer"
+                  >
+                    {value.cuidadorName}
+                  </div>
+                  <div
+                    key={value.bisonId}
+                    className="column-admin-bison hover:cursor-pointer"
+                  >
+                    {value.bisonName}
+                  </div>
+                </>
+              ))}
             </section>
-            <div className="report-section">
+            <div className="report-section-admin">
               <div>
                 <button>PDF</button>
                 <button>Excel</button>
               </div>
               <br />
               <div className="date-section-container">
-                <div className="date-section">
+                <div className="date-section-admin">
                   <label>Fecha Inicial:</label>
                   <input type="date" />
                 </div>
-                <div className="date-section">
+                <div className="date-section-admin">
                   <label> Fecha Final:</label>
                   <input type="date" />
                 </div>
